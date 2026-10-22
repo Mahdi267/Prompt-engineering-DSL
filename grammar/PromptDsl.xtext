@@ -1,0 +1,14 @@
+grammar org.promptengineering.dsl.PromptDsl with org.eclipse.xtext.common.Terminals
+
+generate promptDsl "http://www.promptengineering.org/dsl/PromptDsl"
+
+Model:
+    prompts+=Prompt*;
+
+Prompt:
+    'prompt' name=ID '{'
+        'goal' ':' goal=STRING
+        ('context' ':' context=STRING)?
+        ('constraints' ':' constraints+=STRING (',' constraints+=STRING)*)?
+        ('format' ':' format=STRING)?
+    '}';

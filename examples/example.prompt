@@ -1,0 +1,6 @@
+prompt code_review {
+    goal: "Review the submitted code for correctness and clarity."
+    context: "The code is part of a small Python application."
+    constraints: "Do not rewrite unrelated files", "Explain important findings"
+    format: "Return a concise review with prioritized findings."
+}
