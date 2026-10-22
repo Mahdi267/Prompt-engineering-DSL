@@ -1,0 +1,64 @@
+@namespace(uri="geoges.sms.pdsl", prefix="pdsl")
+package promptDSL;
+
+class Prompt {
+	id attr String ~id;
+	ref Input[*] input;
+	val Task[+] task;
+	ref output[1] output;
+}
+
+class Input {
+	id attr String ~id;
+	attr Type type = "Text";
+}
+
+class Role {
+	id attr String ~id;
+	attr String actor;
+}
+
+enum Type {
+	Image = 0;
+	Code = 1;
+	Text = 2;
+	Document = 3;
+	Video = 4;
+	Audio = 5;
+}
+
+class Example {
+	id attr String ~id;
+	attr String example;
+}
+
+class Instruction {
+	id attr String ~id;
+	attr String instruction;
+	val Constraint[*] constraint;
+}
+
+class Context {
+	id attr String ~id;
+	attr String context;
+}
+
+class Constraint {
+	attr String ~id;
+	attr String constraint;
+}
+
+class Task {
+	id attr String ~id;
+	attr String task;
+	val Example[*] example;
+	val Instruction[*] instruction;
+	val Context[1] context;
+	ref Role role;
+}
+
+class output {
+	id attr String ~id;
+	attr Type type = "Text";
+}
+
